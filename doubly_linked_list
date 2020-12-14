@@ -123,7 +123,7 @@ printf("contents of dq\n");
 temp=head->rlink;
 while(temp!=head)
 {
-printf("%d",temp->info);
+printf("%d\n",temp->info);
 temp=temp->rlink;
 }
 printf("\n");
@@ -147,15 +147,21 @@ while(cur!=head)
   else
  {
   count++;
-  if(count>1){
+ }
+  if(count==1){
+    cur=cur->rlink;
+    continue;
+
+  }
+  else{
   prev=cur->llink;
   next=cur->rlink;
   prev->rlink=next;
   next->llink=prev;
   freenode(cur);
   cur=next; 
-  }
- }
+}
+ 
 }
 if(count==0)
   printf("key not found");
